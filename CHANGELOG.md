@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- 2023-10-23: chore(routes): add rate limiting
 - 2021-01-01: chore: initial project setup
 - 2024-12-04: Improve code readability
 - 2024-07-22: refactor(utils): sync schema changes
