@@ -1,15 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:my_app/screens/auth/login_screen_by_phone_no.dart';
-import 'package:my_app/screens/auth/rejistration_screen.dart';
-import 'package:my_app/screens/intro_screen/IntroScr.dart';
+import 'package:my_app/screens/auth/registration_screen.dart';
+import 'package:my_app/screens/home_screen/home_screen.dart';
 
 class LoginScr extends StatelessWidget {
   LoginScr({super.key});
-  FirebaseAuth auth =FirebaseAuth.instance;
-  TextEditingController emailController=TextEditingController();
-  TextEditingController passwordController=TextEditingController();
+  FirebaseAuth auth = FirebaseAuth.instance;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,8 +19,8 @@ class LoginScr extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset('assest/Image.png'),
-                SizedBox(height: 30),
-                Text(
+                const SizedBox(height: 30),
+                const Text(
                   'Input Your Credential ',
                   style: TextStyle(
                     fontSize: 25,
@@ -30,7 +28,7 @@ class LoginScr extends StatelessWidget {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                Text(
+                const Text(
                   'To Log in',
                   style: TextStyle(
                     fontSize: 25,
@@ -38,15 +36,15 @@ class LoginScr extends StatelessWidget {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 25),
+                const SizedBox(height: 25),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Email'),
-                    SizedBox(height: 8),
+                    const Text('Email'),
+                    const SizedBox(height: 8),
                     TextField(
-                      controller:emailController ,
-                      decoration: InputDecoration(
+                      controller: emailController,
+                      decoration: const InputDecoration(
                         hintText: 'Enter your email address',
                         prefixIcon: Icon(Icons.email),
                         border: UnderlineInputBorder(),
@@ -54,16 +52,16 @@ class LoginScr extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Password'),
-                    SizedBox(height: 8),
+                    const Text('Password'),
+                    const SizedBox(height: 8),
                     TextField(
                       controller: passwordController,
                       obscureText: true,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         hintText: 'Enter your password',
                         prefixIcon: Icon(Icons.lock),
                         suffixIcon: Icon(Icons.visibility_off),
@@ -72,36 +70,43 @@ class LoginScr extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
                       children: [
                         Checkbox(value: false, onChanged: (bool? value) {}),
-                        Text('Remember me'),
+                        const Text('Remember me'),
                       ],
                     ),
                     TextButton(
                       onPressed: () {},
-                      child: Text('Forgot Password?'),
-
+                      child: const Text('Forgot Password?'),
                     ),
                   ],
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 ElevatedButton(
                   onPressed: () {
-                    auth.signInWithEmailAndPassword(email: emailController.text, password: passwordController.text).then((value)
-                    { Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => IntroScr()));});
-
+                    auth
+                        .signInWithEmailAndPassword(
+                            email: emailController.text,
+                            password: passwordController.text)
+                        .then((value) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeScr()));
+                    });
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor : Colors.green,
-                    padding: EdgeInsets.symmetric(horizontal: 130, vertical: 12),
+                    backgroundColor: Colors.green,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 130, vertical: 12),
                   ),
-                  child: Text('Login ',
+                  child: const Text(
+                    'Login ',
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.white,
@@ -109,48 +114,19 @@ class LoginScr extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 10),
-                SizedBox(
-                  height: 50,
-                  width: 320,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoginPScr()),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12), // Reduced horizontal padding
-                      backgroundColor: Colors.green,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center, // Center-aligns text within the row
-                      children: [
-                        Text(
-                          'Login By Phone No',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(height: 0),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Dont have an Account? ',
                     ),
-                    TextButton(onPressed: (){
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => RegScr()));
-                    },
-                      child: Text(
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => RegScr()));
+                      },
+                      child: const Text(
                         'Sign Up',
                         style: TextStyle(
                           color: Colors.green,
