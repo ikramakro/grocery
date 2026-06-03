@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- 2026-06-03: docs(ui): sync schema changes
 - 2024-07-22: test(api): fix CORS headers
 - 2023-10-23: chore(routes): add rate limiting
 - 2021-01-01: chore: initial project setup
